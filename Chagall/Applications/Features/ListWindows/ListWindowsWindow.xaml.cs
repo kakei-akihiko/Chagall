@@ -23,6 +23,7 @@ public partial class ListWindowsWindow : Window
     private WindowService windowService = new();
     private readonly SettingRepository settingRepository = new();
 
+    // 実行ボタンクリック
     private void RunButton_Click(object sender, RoutedEventArgs e)
     {
         var setting = settingRepository.Load();
@@ -30,11 +31,20 @@ public partial class ListWindowsWindow : Window
         windowService.Run(setting.Policies, setting.OtherWindowCommand);
     }
 
+    // 設定フォルダを開くボタンクリック
     private void OpenSettingsFolderButton_Click(object sender, RoutedEventArgs e)
     {
         var path = settingRepository.GetFolderPath();
 
         System.Diagnostics.Process.Start("EXPLORER.EXE", path);
+    }
+
+    // 再取得ボタンクリック
+    private void RefreshButton_Click(object sender, RoutedEventArgs e)
+    {
+        viewModel.Windows.Clear();
+        foreach (var item in windowService.GetWindows())
+            viewModel.Windows.Add(item);
     }
 
     private void copyTitleButton_Click(object sender, RoutedEventArgs e)

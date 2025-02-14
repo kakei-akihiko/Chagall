@@ -6,6 +6,9 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <SupportedOSPlatformVersion>10.0.20348.0</SupportedOSPlatformVersion>
+    <VersionPrefix>1.1.0</VersionPrefix>
+    <InformationalVersion>$(VersionPrefix)</InformationalVersion>
+    <FileVersion>1.1.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

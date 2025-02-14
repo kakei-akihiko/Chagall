@@ -27,6 +27,7 @@ namespace Chagall.Usecases
 
                 if (IsTarget(rectangle.Width, rectangle.Height, visible, text) == false)
                     continue;
+                Debug.WriteLine("★WindowText: {0}", text);
 
                 var processId = windowRepository.GetProcessId(handle);
 
@@ -71,7 +72,8 @@ namespace Chagall.Usecases
         }
 
         private bool IsTarget(int width, int height, bool isVisible, string text) =>
-            width > 0 && height > 0 && isVisible && string.IsNullOrEmpty(text) == false;
+            width > 0 && height > 0 && isVisible && string.IsNullOrEmpty(text) == false
+            && text != "SplashtopBlankScreen";
 
         private bool IsMatch(string text, IntPtr handle, WindowFilter filter)
         {
