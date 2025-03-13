@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Windows;
 using Window = Chagall.Domain.Features.Windows.Window;
+using System.ComponentModel;
 
 namespace Chagall.Usecases
 {
@@ -27,12 +28,25 @@ namespace Chagall.Usecases
 
                 if (IsTarget(rectangle.Width, rectangle.Height, visible, text) == false)
                     continue;
-                Debug.WriteLine("★WindowText: {0}", text);
 
-                var processId = windowRepository.GetProcessId(handle);
+                var processId = 0;
+                try
+                {
+                    processId = windowRepository.GetProcessId(handle);
+                } catch (Exception ex)
+                {
+                    Debug.WriteLine("★プロセスIDを取得できません: {0} (handle={1})", text, handle, ex);
+                }
 
-                var path = processRepository.GetMainModuleProcessPath(processId);
-                Debug.WriteLine("★{0} {1} {2}", text, processId, path);
+                var path = default(string);
+                try
+                {
+                    path = processId == 0 ? "" : processRepository.GetMainModuleProcessPath(processId);
+                }
+                catch (Win32Exception ex)
+                {
+                    Debug.WriteLine("★モジュールのパスを取得できません: {0} (handle: {1}, process: {2}) Exception: {3}", text, handle, processId, ex);
+                }
 
                 var window = new Window();
                 window.Handle = handle;

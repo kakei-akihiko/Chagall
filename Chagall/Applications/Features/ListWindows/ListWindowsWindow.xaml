@@ -68,6 +68,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBox Grid.Column="0"
+                         IsEnabled="{Binding SelectedWindow.MainModulePathEnabled}"
                          IsReadOnly="True"
                          Text="{Binding SelectedWindow.MainModulePath}"
                          TextWrapping="WrapWithOverflow"
@@ -75,6 +76,7 @@
                 <Button x:Name="copyProcessPathButton"
                         Grid.Column="1"
                         Content="コピー"
+                        IsEnabled="{Binding SelectedWindow.MainModulePathEnabled}"
                         VerticalAlignment="Top"
                         Click="copyMainModulePathButton_Click"/>
             </Grid>
