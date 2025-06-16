@@ -2,6 +2,7 @@ using Chagall.Usecases;
 using Chagall.Views;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Chagall;
@@ -35,6 +36,9 @@ public sealed partial class MainWindow : Window
 
     private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
     {
+        var item = args.SelectedItem as MainNavigationItem;
+        ViewModel.NavigationItem = item;
+        Debug.WriteLine("Selected MainNavigationItem. Title: {0}, Tag: {1}", item?.Title, item?.Tag);
     }
 
     private WindowService windowService = new();

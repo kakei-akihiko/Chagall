@@ -40,8 +40,16 @@
         </NavigationView.MenuItemTemplate>
         <!-- メイン領域 -->
         <StackPanel>
-            <TextBox Header="タイトル:" IsReadOnly="True"/>
-            <TextBox Header="メインモジュールのパス:" IsReadOnly="True" />
+            <TextBox
+                Header="タイトル:"
+                IsReadOnly="True"
+                Text="{x:Bind ViewModel.NavigationItem.Title, Mode=OneWay}"
+                TextWrapping="Wrap"/>
+            <TextBox
+                Header="メインモジュールのパス:"
+                IsReadOnly="True"
+                Text="{x:Bind ViewModel.NavigationItem.Tag, Mode=OneWay}"
+                TextWrapping="Wrap"/>
         </StackPanel>
     </NavigationView>
 </Window>

@@ -1,22 +1,26 @@
-﻿using Microsoft.UI.Xaml.Controls;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace Chagall.Views;
 
-public class MainViewModel
+public class MainViewModel : INotifyPropertyChanged
 {
-    public ObservableCollection<MainNavigationItem> NavigationItems { get; set; } = [
-        new ()
+    public ObservableCollection<MainNavigationItem> NavigationItems { get; set; } = [];
+
+    public MainNavigationItem? NavigationItem
+    {
+        get => _navigationItem;
+        set
         {
-            Title = "ウインドウ1",
-            Icon = new SymbolIcon(Symbol.Memo),
-            Tag = "windows"
-        },
-        new ()
-        {
-            Title = "ウインドウ2",
-            Icon = new SymbolIcon(Symbol.View),
-            Tag = "windows"
+            if (_navigationItem != value)
+            {
+                _navigationItem = value;
+                PropertyChanged?.Invoke(this, new(nameof(NavigationItem)));
+            }
         }
-    ];
+    }
+
+    private MainNavigationItem? _navigationItem = null;
+
+    public event PropertyChangedEventHandler? PropertyChanged;
 }
