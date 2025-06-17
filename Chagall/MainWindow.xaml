@@ -43,12 +43,12 @@
             <TextBox
                 Header="タイトル:"
                 IsReadOnly="True"
-                Text="{x:Bind ViewModel.NavigationItem.Title, Mode=OneWay}"
+                Text="{x:Bind ViewModel.SelectedWindowTtitle, Mode=OneWay}"
                 TextWrapping="Wrap"/>
             <TextBox
                 Header="メインモジュールのパス:"
                 IsReadOnly="True"
-                Text="{x:Bind ViewModel.NavigationItem.Tag, Mode=OneWay}"
+                Text="{x:Bind ViewModel.SelectedWindowModulePath, Mode=OneWay}"
                 TextWrapping="Wrap"/>
         </StackPanel>
     </NavigationView>

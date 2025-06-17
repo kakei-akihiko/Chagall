@@ -16,9 +16,19 @@ public class MainViewModel : INotifyPropertyChanged
             {
                 _navigationItem = value;
                 PropertyChanged?.Invoke(this, new(nameof(NavigationItem)));
+                PropertyChanged?.Invoke(this, new(nameof(SelectedWindowTtitle)));
+                PropertyChanged?.Invoke(this, new(nameof(SelectedWindowModulePath)));
             }
         }
     }
+
+    public string? SelectedWindowTtitle =>
+        NavigationItem == null ? string.Empty
+        : NavigationItem.Title ?? "（取得できませんでした）";
+
+    public string SelectedWindowModulePath =>
+        NavigationItem == null ? string.Empty
+        : NavigationItem.MainModulePath ?? "（取得できませんでした）";
 
     private MainNavigationItem? _navigationItem = null;
 

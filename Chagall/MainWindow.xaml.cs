@@ -25,9 +25,10 @@ public sealed partial class MainWindow : Window
         var items = windowService.GetWindows()
             .Select(window => new MainNavigationItem()
             {
+                Icon = new SymbolIcon(Symbol.View),
+                MainModulePath = window.MainModulePath,
                 Tag = window.Handle.ToString(),
-                Title = window.Text,
-                Icon = new SymbolIcon(Symbol.View)
+                Title = window.Text
             });
 
         foreach (var item in items)
