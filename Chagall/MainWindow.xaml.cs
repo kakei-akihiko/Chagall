@@ -4,6 +4,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System.Diagnostics;
 using System.Linq;
+using Windows.ApplicationModel.DataTransfer;
 
 namespace Chagall;
 
@@ -49,8 +50,30 @@ public sealed partial class MainWindow : Window
 
     private WindowService windowService = new();
 
+    private void ModulePathCopyButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (ViewModel.SelecrtedWindowModulePathCopyEnabled)
+        {
+            var dataPackage = new DataPackage();
+            dataPackage.SetText(ViewModel.SelectedWindowModulePath);
+            Clipboard.SetContent(dataPackage);
+            return;
+        }
+    }
+
     private void RefreshButton_Click(object sender, RoutedEventArgs e)
     {
         Refresh();
+    }
+
+    private void TitleCopyButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (ViewModel.SelecrtedWindowModulePathCopyEnabled)
+        {
+            var dataPackage = new DataPackage();
+            dataPackage.SetText(ViewModel.SelectedWindowTitle);
+            Clipboard.SetContent(dataPackage);
+            return;
+        }
     }
 }
