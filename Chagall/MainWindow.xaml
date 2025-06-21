@@ -58,6 +58,7 @@
                     Grid.Column="1"
                     Content="コピー"
                     IsEnabled="{x:Bind ViewModel.SelecrtedWindowTitleCopyEnabled, Mode=OneWay}"
+                    Style="{StaticResource AccentButtonStyle}"
                     VerticalAlignment="Top"
                     Click="TitleCopyButton_Click"/>
             </Grid>
@@ -79,6 +80,7 @@
                     Grid.Column="1"
                     Content="コピー"
                     IsEnabled="{x:Bind ViewModel.SelecrtedWindowModulePathCopyEnabled, Mode=OneWay}"
+                    Style="{StaticResource AccentButtonStyle}"
                     VerticalAlignment="Top"
                     Click="ModulePathCopyButton_Click"/>
             </Grid>
