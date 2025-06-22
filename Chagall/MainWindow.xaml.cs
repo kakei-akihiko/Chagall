@@ -1,3 +1,4 @@
+using Chagall.Domain.Settings;
 using Chagall.Usecases;
 using Chagall.Views;
 using Microsoft.UI.Xaml;
@@ -43,12 +44,22 @@ public sealed partial class MainWindow : Window
 
     private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
     {
+        if (args.IsSettingsSelected)
+        {
+            var path = settingRepository.GetFolderPath();
+
+            Process.Start("EXPLORER.EXE", path);
+
+            Debug.WriteLine("Selected MainNavigationItem. Title: 設定, Path: {0}", path);
+            return;
+        }
         var item = args.SelectedItem as MainNavigationItem;
         ViewModel.NavigationItem = item;
         Debug.WriteLine("Selected MainNavigationItem. Title: {0}, Tag: {1}", item?.Title, item?.Tag);
     }
 
     private WindowService windowService = new();
+    private readonly SettingRepository settingRepository = new();
 
     private void ModulePathCopyButton_Click(object sender, RoutedEventArgs e)
     {
