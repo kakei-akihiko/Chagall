@@ -21,19 +21,25 @@
         IsPaneOpen="True"
         IsSettingsVisible="True"
         SelectionChanged="NavView_SelectionChanged"
-        MenuItemsSource="{x:Bind ViewModel.NavigationItems}">
+        MenuItemsSource="{x:Bind ViewModel.NavigationItems, Mode=OneWay}">
         <NavigationView.PaneHeader>
             <StackPanel Orientation="Horizontal">
-                <Button Content="整列"/>
+                <Button
+                    Content="整列"
+                    Style="{StaticResource AccentButtonStyle}"
+                    Margin="10,0,0,0"
+                    Click="ApplyButton_Click"/>
                 <Button
                     Content="取得"
+                    Style="{StaticResource AccentButtonStyle}"
+                    Margin="10,0,0,0"
                     Click="RefreshButton_Click"/>
             </StackPanel>
         </NavigationView.PaneHeader>
         <NavigationView.MenuItemTemplate>
             <DataTemplate x:DataType="localv:MainNavigationItem">
                 <NavigationViewItem
-                    Icon="{x:Bind Icon}"
+                    Icon="PreviewLink"
                     Content="{x:Bind Title}"
                     Tag="{x:Bind Tag}"/>
             </DataTemplate>
@@ -42,8 +48,7 @@
         <StackPanel Margin="12,0,12,0">
             <TextBlock
                 Text="タイトル:"
-                Margin="0,12,0,0"
-                />
+                Margin="0,12,0,0"/>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -64,8 +69,7 @@
             </Grid>
             <TextBlock
                 Text="メインモジュールのパス:"
-                Margin="0,12,0,0"
-                />
+                Margin="0,12,0,0"/>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>

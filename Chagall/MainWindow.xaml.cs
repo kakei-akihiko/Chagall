@@ -32,7 +32,6 @@ public sealed partial class MainWindow : Window
         var items = windowService.GetWindows()
             .Select(window => new MainNavigationItem()
             {
-                Icon = new SymbolIcon(Symbol.View),
                 MainModulePath = window.MainModulePath,
                 Tag = window.Handle.ToString(),
                 Title = window.Text
@@ -40,6 +39,18 @@ public sealed partial class MainWindow : Window
 
         foreach (var item in items)
             ViewModel.NavigationItems.Add(item);
+    }
+
+    private void ApplyButton_Click(object sender, RoutedEventArgs e)
+    {
+        var setting = settingRepository.Load();
+
+        windowService.Run(setting.Policies, setting.OtherWindowCommand);
+    }
+
+    private void RefreshButton_Click(object sender, RoutedEventArgs e)
+    {
+        Refresh();
     }
 
     private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -61,6 +72,8 @@ public sealed partial class MainWindow : Window
     private WindowService windowService = new();
     private readonly SettingRepository settingRepository = new();
 
+    // 右画面
+
     private void ModulePathCopyButton_Click(object sender, RoutedEventArgs e)
     {
         if (ViewModel.SelecrtedWindowModulePathCopyEnabled)
@@ -70,11 +83,6 @@ public sealed partial class MainWindow : Window
             Clipboard.SetContent(dataPackage);
             return;
         }
-    }
-
-    private void RefreshButton_Click(object sender, RoutedEventArgs e)
-    {
-        Refresh();
     }
 
     private void TitleCopyButton_Click(object sender, RoutedEventArgs e)
