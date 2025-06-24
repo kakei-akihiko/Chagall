@@ -1,6 +1,7 @@
-﻿using System;
-using System.Text;
+using System;
 using System.Runtime.InteropServices;
+using System.Text;
+using Windows.Graphics;
 
 namespace Chagall.Infrastructure.Windows;
 
@@ -39,10 +40,10 @@ public class WindowApi
     // ウインドーの位置
 
     [DllImport("user32.dll")]
-    public static extern int GetWindowRect(IntPtr windowHandle, ref Int32Rect rect);
+    public static extern int GetWindowRect(IntPtr windowHandle, ref RectInt32 rect);
 
     [DllImport("user32.dll")]
-    public static extern int ScreenToClient(IntPtr windowHandle, ref WindowLocation point);
+    public static extern int ScreenToClient(IntPtr windowHandle, ref PointInt32 point);
 
     [DllImport("user32.dll")]
     public static extern int MoveWindow(

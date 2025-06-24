@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using Windows.Graphics;
 
 namespace Chagall.Infrastructure.Windows;
 
@@ -27,15 +28,15 @@ public class WindowRepository
         return id;
     }
 
-    public Int32Rect GetRectangle(IntPtr handle)
+    public RectInt32 GetRectangle(IntPtr handle)
     {
-        var rect = new Int32Rect();
+        var rect = new RectInt32();
 
         WindowApi.GetWindowRect(handle, ref rect);
 
-        var size = new WindowSize(rect.Width - rect.X, rect.Height - rect.Y);
+        var size = new SizeInt32(rect.Width - rect.X, rect.Height - rect.Y);
 
-        var point = new WindowLocation(rect.X, rect.Y);
+        var point = new PointInt32(rect.X, rect.Y);
 
         var desktopHandle = GetDesktopHandle();
 
@@ -54,18 +55,18 @@ public class WindowRepository
         return rect;
     }
 
-    public void SetRectangle(IntPtr handle, Int32Rect value)
+    public void SetRectangle(IntPtr handle, RectInt32 value)
     {
         WindowApi.MoveWindow(handle, value.X, value.Y, value.Width, value.Height, true);
     }
 
-    public Size GetSize(IntPtr handle)
+    public SizeInt32 GetSize(IntPtr handle)
     {
-        var rect = new Int32Rect();
+        var rect = new RectInt32();
 
         WindowApi.GetWindowRect(handle, ref rect);
 
-        return new Size(rect.Width - rect.X, rect.Height - rect.Y);
+        return new SizeInt32(rect.Width - rect.X, rect.Height - rect.Y);
     }
 
     public string GetText(IntPtr handle)

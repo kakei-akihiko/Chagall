@@ -1,5 +1,5 @@
-﻿using System;
-using Chagall.Infrastructure.Windows;
+using System;
+using Windows.Graphics;
 
 namespace Chagall.Domain.Features.Windows;
 
@@ -14,7 +14,7 @@ class Window
     }
     private string? _mainModulepath = null;
     public int ProcessId { get; set; }
-    public Int32Rect Rectangle { get; set; }
+    public RectInt32 Rectangle { get; set; }
     public string? Text { get; set; }
     public bool Visible { get; set; }
 }
