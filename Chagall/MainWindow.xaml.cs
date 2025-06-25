@@ -1,3 +1,4 @@
+using Chagall.AppData;
 using Chagall.Domain.Settings;
 using Chagall.Usecases;
 using Chagall.Views;
@@ -6,6 +7,9 @@ using Microsoft.UI.Xaml.Controls;
 using System.Diagnostics;
 using System.Linq;
 using Windows.ApplicationModel.DataTransfer;
+using Microsoft.UI.Windowing;
+using Chagall.ExMethods;
+using Chagall.AppData.State;
 
 namespace Chagall;
 
@@ -15,10 +19,11 @@ public sealed partial class MainWindow : Window
     {
         InitializeComponent();
 
-        var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
-        var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hwnd);
-        var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
-        appWindow.Resize(new Windows.Graphics.SizeInt32(800, 600));
+        appState = stateRepository.Load();
+
+        appWindow = this.GetAppWindow();
+
+        RestoreWindowLocation(appState.MainWindow.Location);
 
         Refresh();
     }
@@ -57,11 +62,7 @@ public sealed partial class MainWindow : Window
     {
         if (args.IsSettingsSelected)
         {
-            var path = settingRepository.GetFolderPath();
-
-            Process.Start("EXPLORER.EXE", path);
-
-            Debug.WriteLine("Selected MainNavigationItem. Title: 設定, Path: {0}", path);
+            AppDataFolder.RunExplorer();
             return;
         }
         var item = args.SelectedItem as MainNavigationItem;
@@ -70,7 +71,6 @@ public sealed partial class MainWindow : Window
     }
 
     private WindowService windowService = new();
-    private readonly SettingRepository settingRepository = new();
 
     // 右画面
 
@@ -94,5 +94,50 @@ public sealed partial class MainWindow : Window
             Clipboard.SetContent(dataPackage);
             return;
         }
+    }
+
+    //
+    // このウインドウ自体の変数や処理
+    //
+
+    private AppState appState;
+    private AppWindow appWindow;
+    private readonly SettingRepository settingRepository = new();
+    private readonly StateRepository stateRepository = new();
+
+    // ウインドウの位置・大きさが復元可能かどうか取得
+    private bool IsValid(RectangleState? windowRect)
+    {
+        var workArea = DisplayArea.GetFromWindowId(appWindow.Id, DisplayAreaFallback.Primary).WorkArea;
+
+        return windowRect != null
+            && windowRect.X > workArea.X - 10
+            && windowRect.Y > workArea.Y - 10
+            && windowRect.Width <= workArea.Width
+            && windowRect.Height <= workArea.Height
+            && windowRect.X < workArea.X + workArea.Width - 100
+            && windowRect.Y < workArea.Y + workArea.Height - 100;
+    }
+
+    // ウインドウが閉じられたとき
+    private void Window_Closed(object sender, WindowEventArgs args)
+    {
+        if (this.IsMaximized() == false)
+        {
+            var p = appWindow.Position;
+            var s = appWindow.Size;
+            var location = new RectangleState(p.X, p.Y, s.Width, s.Height);
+            var windowState = new MainWindowState(location);
+            var appState = new AppState(windowState);
+            stateRepository.Save(appState);
+        }
+    }
+
+    private void RestoreWindowLocation(RectangleState? location)
+    {
+        if (location != null && IsValid(location))
+            appWindow.MoveAndResize(new(location.X, location.Y, location.Width, location.Height));
+        else
+            appWindow.Resize(new Windows.Graphics.SizeInt32(800, 600));
     }
 }

@@ -24,7 +24,7 @@ class WindowService
             var visible = windowRepository.IsVisible(handle);
 
             if (visible && string.IsNullOrEmpty(text) == false)
-                DebugWrite(text, rectangle);
+             　DebugWrite(text, rectangle);
 
             if (IsTarget(rectangle.Width, rectangle.Height, visible, text) == false)
                 continue;
