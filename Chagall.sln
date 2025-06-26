@@ -1,30 +1,43 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.1.32421.90
+VisualStudioVersion = 17.14.36202.13 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chagall", "Chagall\Chagall.csproj", "{7C7F3C8B-DAED-4986-B051-539DE42D02F6}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ソリューション項目", "ソリューション項目", "{6A233235-5286-45B0-8330-25A75EAC6465}"
-	ProjectSection(SolutionItems) = preProject
-		README.md = README.md
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chagall", "Chagall\Chagall.csproj", "{FF34D5E9-DB39-4673-A12B-B1B967317AC7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
+		Debug|ARM64 = Debug|ARM64
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM64 = Release|ARM64
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7C7F3C8B-DAED-4986-B051-539DE42D02F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7C7F3C8B-DAED-4986-B051-539DE42D02F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7C7F3C8B-DAED-4986-B051-539DE42D02F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7C7F3C8B-DAED-4986-B051-539DE42D02F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF34D5E9-DB39-4673-A12B-B1B967317AC7}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{FF34D5E9-DB39-4673-A12B-B1B967317AC7}.Debug|ARM64.Build.0 = Debug|ARM64
+		{FF34D5E9-DB39-4673-A12B-B1B967317AC7}.Debug|ARM64.Deploy.0 = Debug|ARM64
+		{FF34D5E9-DB39-4673-A12B-B1B967317AC7}.Debug|x64.ActiveCfg = Debug|x64
+		{FF34D5E9-DB39-4673-A12B-B1B967317AC7}.Debug|x64.Build.0 = Debug|x64
+		{FF34D5E9-DB39-4673-A12B-B1B967317AC7}.Debug|x64.Deploy.0 = Debug|x64
+		{FF34D5E9-DB39-4673-A12B-B1B967317AC7}.Debug|x86.ActiveCfg = Debug|x86
+		{FF34D5E9-DB39-4673-A12B-B1B967317AC7}.Debug|x86.Build.0 = Debug|x86
+		{FF34D5E9-DB39-4673-A12B-B1B967317AC7}.Debug|x86.Deploy.0 = Debug|x86
+		{FF34D5E9-DB39-4673-A12B-B1B967317AC7}.Release|ARM64.ActiveCfg = Release|ARM64
+		{FF34D5E9-DB39-4673-A12B-B1B967317AC7}.Release|ARM64.Build.0 = Release|ARM64
+		{FF34D5E9-DB39-4673-A12B-B1B967317AC7}.Release|ARM64.Deploy.0 = Release|ARM64
+		{FF34D5E9-DB39-4673-A12B-B1B967317AC7}.Release|x64.ActiveCfg = Release|x64
+		{FF34D5E9-DB39-4673-A12B-B1B967317AC7}.Release|x64.Build.0 = Release|x64
+		{FF34D5E9-DB39-4673-A12B-B1B967317AC7}.Release|x64.Deploy.0 = Release|x64
+		{FF34D5E9-DB39-4673-A12B-B1B967317AC7}.Release|x86.ActiveCfg = Release|x86
+		{FF34D5E9-DB39-4673-A12B-B1B967317AC7}.Release|x86.Build.0 = Release|x86
+		{FF34D5E9-DB39-4673-A12B-B1B967317AC7}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {2270D8F7-2DC9-4E4E-995C-F92A3EBA8903}
+		SolutionGuid = {02906ADF-5177-4CF9-97B4-56CD112539F0}
 	EndGlobalSection
 EndGlobal

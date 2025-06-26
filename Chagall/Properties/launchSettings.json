@@ -1,6 +1,9 @@
 {
   "profiles": {
-    "Chagall": {
+    "Chagall (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Chagall (Unpackaged)": {
       "commandName": "Project"
     }
   }

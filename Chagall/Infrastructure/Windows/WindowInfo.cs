@@ -1,5 +1,5 @@
-﻿using System.Runtime.InteropServices;
-using System.Windows;
+using System.Runtime.InteropServices;
+using Windows.Graphics;
 
 namespace Chagall.Infrastructure.Windows;
 
@@ -7,8 +7,8 @@ namespace Chagall.Infrastructure.Windows;
 public struct WindowInfo
 {
     public int cbSize;
-    public Int32Rect rcWindow;
-    public Int32Rect rcClient;
+    public RectInt32 rcWindow;
+    public RectInt32 rcClient;
     public int dwStyle;
     public int dwExStyle;
     public int dwWindowStatus;

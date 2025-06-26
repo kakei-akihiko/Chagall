@@ -1,4 +1,5 @@
-﻿using Chagall.Domain.Features.Windows;
+using Chagall.AppData;
+using Chagall.Domain.Features.Windows;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -40,13 +41,6 @@ internal class SettingRepository
         return setting;
     }
 
-    public string GetFolderPath()
-    {
-        var folder = Environment.SpecialFolder.LocalApplicationData;
-
-        return Path.Combine(Environment.GetFolderPath(folder), "Chagall");
-    }
-
     private AppSetting? LoadInternal()
     {
         var filename = GetFilename();
@@ -65,7 +59,7 @@ internal class SettingRepository
 
     private string GetFilename()
     {
-        return Path.Combine(GetFolderPath(), "Settings.json");
+        return Path.Combine(AppDataFolder.GetFolderPath(), "Settings.json");
     }
 
     private AppSetting GetDefaultSetting()

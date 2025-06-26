@@ -1,17 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using Microsoft.UI.Xaml;
 
-namespace Chagall2025
+namespace Chagall
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
+        private Window? _window;
+
+        public App()
+        {
+            InitializeComponent();
+        }
+
+        protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+        {
+            _window = new MainWindow();
+            _window.Activate();
+        }
     }
 }
