@@ -28,9 +28,9 @@ public class MainViewModel : INotifyPropertyChanged
         }
     }
 
-    public Visibility HomePageVisibility => NavigationItem == null ? Visibility.Visible : Visibility.Collapsed;
+    public Visibility HomePageVisibility => NavigationItem == null || NavigationItem.IsHome ? Visibility.Visible : Visibility.Collapsed;
 
-    public Visibility WindowPageVisibility => NavigationItem == null ? Visibility.Collapsed : Visibility.Visible;
+    public Visibility WindowPageVisibility => HomePageVisibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
 
     public string SelectedWindowTitle =>
         NavigationItem == null ? string.Empty

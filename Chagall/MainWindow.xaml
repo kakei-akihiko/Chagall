@@ -20,13 +20,13 @@
         PaneDisplayMode="Left"
         IsBackButtonVisible="Collapsed"
         IsPaneOpen="True"
-        IsSettingsVisible="True"
+        IsSettingsVisible="False"
         SelectionChanged="NavView_SelectionChanged"
         MenuItemsSource="{x:Bind ViewModel.NavigationItems, Mode=OneWay}">
         <NavigationView.MenuItemTemplate>
             <DataTemplate x:DataType="localv:MainNavigationItem">
                 <NavigationViewItem
-                    Icon="PreviewLink"
+                    Icon="{x:Bind Icon}"
                     Content="{x:Bind Title}"
                     Tag="{x:Bind Tag}"/>
             </DataTemplate>
@@ -34,6 +34,7 @@
         <StackPanel>
             <!-- メイン領域：ウインドウ以外選択時 -->
             <StackPanel Margin="12,0,12,0" Visibility="{x:Bind ViewModel.HomePageVisibility, Mode=OneWay}">
+                <TextBlock Text="ウインドウ操作"/>
                 <StackPanel Orientation="Horizontal">
                     <Button
                         Content="整列"
@@ -46,6 +47,12 @@
                         Margin="10,0,0,0"
                         Click="RefreshButton_Click"/>
                 </StackPanel>
+                <TextBlock Text="設定"/>
+                <Button
+                        Content="設定フォルダーを開く"
+                        Style="{StaticResource AccentButtonStyle}"
+                        Margin="10,0,0,0"
+                        Click="SettingButton_Click"/>
             </StackPanel>
 
             <!-- メイン領域：ウインドウ選択時 -->
