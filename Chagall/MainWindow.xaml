@@ -23,20 +23,6 @@
         IsSettingsVisible="True"
         SelectionChanged="NavView_SelectionChanged"
         MenuItemsSource="{x:Bind ViewModel.NavigationItems, Mode=OneWay}">
-        <NavigationView.PaneHeader>
-            <StackPanel Orientation="Horizontal">
-                <Button
-                    Content="整列"
-                    Style="{StaticResource AccentButtonStyle}"
-                    Margin="10,0,0,0"
-                    Click="ApplyButton_Click"/>
-                <Button
-                    Content="取得"
-                    Style="{StaticResource AccentButtonStyle}"
-                    Margin="10,0,0,0"
-                    Click="RefreshButton_Click"/>
-            </StackPanel>
-        </NavigationView.PaneHeader>
         <NavigationView.MenuItemTemplate>
             <DataTemplate x:DataType="localv:MainNavigationItem">
                 <NavigationViewItem
@@ -45,50 +31,68 @@
                     Tag="{x:Bind Tag}"/>
             </DataTemplate>
         </NavigationView.MenuItemTemplate>
-        <!-- メイン領域 -->
-        <StackPanel Margin="12,0,12,0">
-            <TextBlock
-                Text="タイトル:"
-                Margin="0,12,0,0"/>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <TextBox
+        <StackPanel>
+            <!-- メイン領域：ウインドウ以外選択時 -->
+            <StackPanel Margin="12,0,12,0" Visibility="{x:Bind ViewModel.HomePageVisibility, Mode=OneWay}">
+                <StackPanel Orientation="Horizontal">
+                    <Button
+                        Content="整列"
+                        Style="{StaticResource AccentButtonStyle}"
+                        Margin="10,0,0,0"
+                        Click="ApplyButton_Click"/>
+                    <Button
+                        Content="取得"
+                        Style="{StaticResource AccentButtonStyle}"
+                        Margin="10,0,0,0"
+                        Click="RefreshButton_Click"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- メイン領域：ウインドウ選択時 -->
+            <StackPanel Margin="12,0,12,0" Visibility="{x:Bind ViewModel.WindowPageVisibility, Mode=OneWay}">
+                <TextBlock
+                    Text="タイトル:"
+                    Margin="0,12,0,0"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox
                     Grid.Column="0"
                     IsReadOnly="True"
                     Text="{x:Bind ViewModel.SelectedWindowTitle, Mode=OneWay}"
                     TextWrapping="Wrap"/>
-                <Button
+                    <Button
                     Grid.Column="1"
                     Content="コピー"
                     IsEnabled="{x:Bind ViewModel.SelecrtedWindowTitleCopyEnabled, Mode=OneWay}"
                     Style="{StaticResource AccentButtonStyle}"
                     VerticalAlignment="Top"
                     Click="TitleCopyButton_Click"/>
-            </Grid>
-            <TextBlock
-                Text="メインモジュールのパス:"
-                Margin="0,12,0,0"/>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <TextBox
+                </Grid>
+                <TextBlock
+                    Text="メインモジュールのパス:"
+                    Margin="0,12,0,0"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox
                     Grid.Column="0"
                     IsReadOnly="True"
                     Text="{x:Bind ViewModel.SelectedWindowModulePath, Mode=OneWay}"
                     TextWrapping="Wrap"/>
-                <Button
+                    <Button
                     Grid.Column="1"
                     Content="コピー"
                     IsEnabled="{x:Bind ViewModel.SelecrtedWindowModulePathCopyEnabled, Mode=OneWay}"
                     Style="{StaticResource AccentButtonStyle}"
                     VerticalAlignment="Top"
                     Click="ModulePathCopyButton_Click"/>
-            </Grid>
+                </Grid>
+            </StackPanel>
         </StackPanel>
     </NavigationView>
 </Window>

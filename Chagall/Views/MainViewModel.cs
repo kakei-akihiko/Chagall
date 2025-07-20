@@ -1,3 +1,5 @@
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
@@ -20,9 +22,15 @@ public class MainViewModel : INotifyPropertyChanged
                 PropertyChanged?.Invoke(this, new(nameof(SelecrtedWindowTitleCopyEnabled)));
                 PropertyChanged?.Invoke(this, new(nameof(SelectedWindowModulePath)));
                 PropertyChanged?.Invoke(this, new(nameof(SelecrtedWindowModulePathCopyEnabled)));
+                PropertyChanged?.Invoke(this, new(nameof(HomePageVisibility)));
+                PropertyChanged?.Invoke(this, new(nameof(WindowPageVisibility)));
             }
         }
     }
+
+    public Visibility HomePageVisibility => NavigationItem == null ? Visibility.Visible : Visibility.Collapsed;
+
+    public Visibility WindowPageVisibility => NavigationItem == null ? Visibility.Collapsed : Visibility.Visible;
 
     public string SelectedWindowTitle =>
         NavigationItem == null ? string.Empty

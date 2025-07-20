@@ -63,6 +63,7 @@ public sealed partial class MainWindow : Window
         if (args.IsSettingsSelected)
         {
             AppDataFolder.RunExplorer();
+            ViewModel.NavigationItem = null;
             return;
         }
         var item = args.SelectedItem as MainNavigationItem;
