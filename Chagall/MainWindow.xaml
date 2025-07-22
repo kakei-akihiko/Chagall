@@ -19,7 +19,7 @@
         x:Name="NavView"
         PaneDisplayMode="Left"
         IsBackButtonVisible="Collapsed"
-        IsPaneOpen="True"
+        IsPaneOpen="False"
         IsSettingsVisible="False"
         SelectionChanged="NavView_SelectionChanged"
         MenuItemsSource="{x:Bind ViewModel.NavigationItems, Mode=OneWay}">
