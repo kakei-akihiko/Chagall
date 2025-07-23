@@ -42,6 +42,9 @@ public sealed partial class MainWindow : Window
                 Title = window.Text
             });
 
+        var homeItem = new MainNavigationItem() { Icon = new(Symbol.Home), Title = "ホーム", IsHome = true };
+        ViewModel.NavigationItems.Add(homeItem);
+
         foreach (var item in items)
             ViewModel.NavigationItems.Add(item);
     }
@@ -60,11 +63,6 @@ public sealed partial class MainWindow : Window
 
     private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
     {
-        if (args.IsSettingsSelected)
-        {
-            AppDataFolder.RunExplorer();
-            return;
-        }
         var item = args.SelectedItem as MainNavigationItem;
         ViewModel.NavigationItem = item;
         Debug.WriteLine("Selected MainNavigationItem. Title: {0}, Tag: {1}", item?.Title, item?.Tag);
@@ -94,6 +92,11 @@ public sealed partial class MainWindow : Window
             Clipboard.SetContent(dataPackage);
             return;
         }
+    }
+
+    private void SettingButton_Click(object sender, RoutedEventArgs e)
+    {
+        AppDataFolder.RunExplorer();
     }
 
     //
