@@ -34,24 +34,24 @@
         <StackPanel>
             <!-- メイン領域：ウインドウ以外選択時 -->
             <StackPanel Margin="12,0,12,0" Visibility="{x:Bind ViewModel.HomePageVisibility, Mode=OneWay}">
-                <TextBlock Text="ウインドウ操作"/>
-                <StackPanel Orientation="Horizontal">
+                <TextBlock Text="ウインドウ操作" Margin="0,8,0,0"/>
+                <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
                     <Button
                         Content="整列"
                         Style="{StaticResource AccentButtonStyle}"
-                        Margin="10,0,0,0"
+                        Margin="0,0,0,0"
                         Click="ApplyButton_Click"/>
                     <Button
                         Content="取得"
                         Style="{StaticResource AccentButtonStyle}"
-                        Margin="10,0,0,0"
+                        Margin="8,0,0,0"
                         Click="RefreshButton_Click"/>
                 </StackPanel>
-                <TextBlock Text="設定"/>
+                <TextBlock Text="設定" Margin="0,8,0,0"/>
                 <Button
                         Content="設定フォルダーを開く"
                         Style="{StaticResource AccentButtonStyle}"
-                        Margin="10,0,0,0"
+                        Margin="0,4,0,0"
                         Click="SettingButton_Click"/>
             </StackPanel>
 
