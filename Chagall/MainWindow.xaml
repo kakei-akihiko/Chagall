@@ -66,17 +66,17 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBox
-                    Grid.Column="0"
-                    IsReadOnly="True"
-                    Text="{x:Bind ViewModel.SelectedWindowTitle, Mode=OneWay}"
-                    TextWrapping="Wrap"/>
+                        Grid.Column="0"
+                        IsReadOnly="True"
+                        Text="{x:Bind ViewModel.SelectedWindowTitle, Mode=OneWay}"
+                        TextWrapping="Wrap"/>
                     <Button
-                    Grid.Column="1"
-                    Content="コピー"
-                    IsEnabled="{x:Bind ViewModel.SelecrtedWindowTitleCopyEnabled, Mode=OneWay}"
-                    Style="{StaticResource AccentButtonStyle}"
-                    VerticalAlignment="Top"
-                    Click="TitleCopyButton_Click"/>
+                        Grid.Column="1"
+                        Content="コピー"
+                        IsEnabled="{x:Bind ViewModel.SelecrtedWindowTitleCopyEnabled, Mode=OneWay}"
+                        Style="{StaticResource AccentButtonStyle}"
+                        VerticalAlignment="Top"
+                        Click="TitleCopyButton_Click"/>
                 </Grid>
                 <TextBlock
                     Text="メインモジュールのパス:"
@@ -87,17 +87,17 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBox
-                    Grid.Column="0"
-                    IsReadOnly="True"
-                    Text="{x:Bind ViewModel.SelectedWindowModulePath, Mode=OneWay}"
-                    TextWrapping="Wrap"/>
+                        Grid.Column="0"
+                        IsReadOnly="True"
+                        Text="{x:Bind ViewModel.SelectedWindowModulePath, Mode=OneWay}"
+                        TextWrapping="Wrap"/>
                     <Button
-                    Grid.Column="1"
-                    Content="コピー"
-                    IsEnabled="{x:Bind ViewModel.SelecrtedWindowModulePathCopyEnabled, Mode=OneWay}"
-                    Style="{StaticResource AccentButtonStyle}"
-                    VerticalAlignment="Top"
-                    Click="ModulePathCopyButton_Click"/>
+                        Grid.Column="1"
+                        Content="コピー"
+                        IsEnabled="{x:Bind ViewModel.SelecrtedWindowModulePathCopyEnabled, Mode=OneWay}"
+                        Style="{StaticResource AccentButtonStyle}"
+                        VerticalAlignment="Top"
+                        Click="ModulePathCopyButton_Click"/>
                 </Grid>
             </StackPanel>
         </StackPanel>
