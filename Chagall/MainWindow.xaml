@@ -99,6 +99,16 @@
                         VerticalAlignment="Top"
                         Click="ModulePathCopyButton_Click"/>
                 </Grid>
+                <TextBlock
+                    Text="ウインドウ幅変更:"
+                    Margin="0,12,0,0"/>
+                <Button
+                        Grid.Column="1"
+                        Content="800px"
+                        IsEnabled="{x:Bind ViewModel.SelecrtedWindowMoveWindowEnabled, Mode=OneWay}"
+                        Style="{StaticResource AccentButtonStyle}"
+                        VerticalAlignment="Top"
+                        Click="ChangeWidth800pxButton_Click"/>
             </StackPanel>
         </StackPanel>
     </NavigationView>
