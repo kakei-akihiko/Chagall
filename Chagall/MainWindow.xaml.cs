@@ -37,6 +37,7 @@ public sealed partial class MainWindow : Window
         var items = windowService.GetWindows()
             .Select(window => new MainNavigationItem()
             {
+                Handle = window.Handle,
                 MainModulePath = window.MainModulePath,
                 Tag = window.Handle.ToString(),
                 Title = window.Text
@@ -91,6 +92,21 @@ public sealed partial class MainWindow : Window
             dataPackage.SetText(ViewModel.SelectedWindowTitle);
             Clipboard.SetContent(dataPackage);
             return;
+        }
+    }
+
+    // 幅変更
+    private void ChangeWidth800pxButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (ViewModel.SelecrtedWindowModulePathCopyEnabled)
+        {
+            var handle = ViewModel.NavigationItem?.Handle;
+            if (handle != null)
+            {
+                var service = new MoveWindowService();
+                service.SetWidth((nint)handle, 800);
+                return;
+            }
         }
     }
 
