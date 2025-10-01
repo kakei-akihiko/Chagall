@@ -110,6 +110,34 @@ public sealed partial class MainWindow : Window
         }
     }
 
+    private void ChangeWidth1000pxButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (ViewModel.SelecrtedWindowModulePathCopyEnabled)
+        {
+            var handle = ViewModel.NavigationItem?.Handle;
+            if (handle != null)
+            {
+                var service = new MoveWindowService();
+                service.SetWidth((nint)handle, 1000);
+                return;
+            }
+        }
+    }
+
+    private void ChangeWidth1200pxButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (ViewModel.SelecrtedWindowModulePathCopyEnabled)
+        {
+            var handle = ViewModel.NavigationItem?.Handle;
+            if (handle != null)
+            {
+                var service = new MoveWindowService();
+                service.SetWidth((nint)handle, 1200);
+                return;
+            }
+        }
+    }
+
     private void SettingButton_Click(object sender, RoutedEventArgs e)
     {
         AppDataFolder.RunExplorer();
